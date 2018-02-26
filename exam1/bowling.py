@@ -24,7 +24,7 @@ def pins(pin):
     if pin == 9:
         turtle.goto(90,40)
 
-def knocked(pin):
+def knocked_over(pin):
     if pin == 0:
         turtle.goto(-5,-92)
     if pin == 1:
@@ -67,7 +67,7 @@ def play1(move1,standing):
             pins(standing[each])
             turtle.color('white')
             turtle.stamp()
-            knocked(standing[each])
+            knocked_over(standing[each])
             turtle.color('black')
             turtle.write('X',font = ('arial',20))
         turtle.goto(0,-140)
@@ -79,7 +79,7 @@ def play1(move1,standing):
             pins(standing[i])
             turtle.color('white')
             turtle.stamp()
-            knocked(standing[i])
+            knocked_over(standing[i])
             turtle.color('black')
             turtle.write('X',font = ('arial',20))
             i += 1
@@ -91,7 +91,7 @@ def play2(move1,move2,standing):
             pins(standing[i])
             turtle.color('white')
             turtle.stamp()
-            knocked(standing[i])
+            knocked_over(standing[i])
             turtle.color('black')
             turtle.write('X',font = ('arial',20))
             i += 1
@@ -105,7 +105,7 @@ def play2(move1,move2,standing):
             pins(standing[i])
             turtle.color('white')
             turtle.stamp()
-            knocked(standing[i])
+            knocked_over(standing[i])
             turtle.color('black')
             turtle.write('X',font = ('arial',20))
             i += 1
@@ -151,7 +151,7 @@ def writescore(finalscore):
 def main():
     pinlist = []
     frame = 1
-    while frame <= 3:
+    while frame <= 10:
         standing = []
         makeboard(standing)
         move1 = turtle.textinput('Frame ' + str(frame),'Enter # of pins (null for random)')
@@ -195,8 +195,6 @@ def main():
         frame += 1
     finalscore = str(finalScore(pinlist))
     writescore(finalscore)
-
-
 
 if __name__ == '__main__':
     main()
