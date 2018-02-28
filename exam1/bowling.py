@@ -1,4 +1,4 @@
-import turtle # change list to 10 elements
+import turtle
 import random
 import time
 
@@ -73,7 +73,7 @@ def play1(move1,standing):
         turtle.goto(0,-140)
         turtle.color('red')
         turtle.write('Strike!',align='center',font = ('arial',30,))
-        time.sleep(2)
+        #time.sleep(2)
     else:
         while i < move1:
             pins(standing[i])
@@ -98,7 +98,7 @@ def play2(move1,move2,standing):
         turtle.goto(0,-140)
         turtle.color('red')
         turtle.write('Spare',align='center',font = ('arial',30,))
-        time.sleep(2)
+        #time.sleep(2)
     else:
         i = int(move1)
         while i < move1 + move2:
@@ -112,7 +112,7 @@ def play2(move1,move2,standing):
         turtle.goto(0,-140)
         turtle.color('red')
         turtle.write('Open Frame: ' + str(10-(move1+move2)),align='center',font = ('arial',30,))
-        time.sleep(2)
+        #time.sleep(2)
 
 def finalScore(pinlist):
     scorelist = []
@@ -151,47 +151,27 @@ def writescore(finalscore):
 def main():
     pinlist = []
     frame = 1
-    while frame <= 10:
+    while frame <= 11:
         standing = []
         makeboard(standing)
-        move1 = turtle.textinput('Frame ' + str(frame),'Enter # of pins (null for random)')
-        if move1 == '':
-            move1 = random.randint(0,10)
-        if int(move1) > 10:
-            move1 = 10
-        move1 = int(move1)
-        play1(move1,standing)
-        pinlist.append(move1)
-        if move1 != 10:
-            move2 = turtle.textinput('Frame ' + str(frame),'Enter # of pins (null for random)')
-            if move2 == '':
-                move2 = random.randint(0,move1)
-            if int(move2) > 10 - move1:
-                move2 = 10 - move1
-            move2 = int(move2)
-            play2(move1,move2,standing)
-            pinlist.append(move2)
-        if frame == 10:
-            if pinlist[-1] == 10 or pinlist[-1] + pinlist[-2] == 10:
-                standing = []
-                makeboard(standing)
-                move1 = turtle.textinput('Frame 11','Enter # of pins (null for random)')
-                if move1 == '':
-                    move1 = random.randint(0,10)
-                if int(move1) > 10:
-                    move1 = 10
-                move1 = int(move1)
-                pinlist.append(move1)
-                play1(move1,standing)
-                if move1 != 10:
-                    move2 = turtle.textinput('Frame 11','Enter # of pins (null for random)')
-                    if move2 == '':
-                        move2 = random.randint(0,move1)
-                    if int(move2) > 10 - move1:
-                        move2 = 10 - move1
-                    move2 = int(move2)
-                    play2(move1,move2,standing)
-                    pinlist.append(move2)
+        if frame != 10 or pinlist[-1] == 10 or pinlist[-1] + pinlist[-2] == 10:
+            move1 = turtle.textinput('Frame ' + str(frame),'Enter # of pins (null for random)')
+            if move1 == '':
+                move1 = random.randint(0,10)
+            if int(move1) > 10:
+                move1 = 10
+            move1 = int(move1)
+            play1(move1,standing)
+            pinlist.append(move1)
+            if move1 != 10:
+                move2 = turtle.textinput('Frame ' + str(frame),'Enter # of pins (null for random)')
+                if move2 == '':
+                    move2 = random.randint(0,move1)
+                if int(move2) > 10 - move1:
+                    move2 = 10 - move1
+                move2 = int(move2)
+                play2(move1,move2,standing)
+                pinlist.append(move2)
         frame += 1
     finalscore = str(finalScore(pinlist))
     writescore(finalscore)
