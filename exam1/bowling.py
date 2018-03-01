@@ -153,8 +153,8 @@ def main():
     frame = 1
     while frame <= 11:
         standing = []
-        makeboard(standing)
-        if frame != 10 or pinlist[-1] == 10 or pinlist[-1] + pinlist[-2] == 10:
+        if frame != 11 or pinlist[-1] == 10 or pinlist[-1] + pinlist[-2] == 10:
+            makeboard(standing)
             move1 = turtle.textinput('Frame ' + str(frame),'Enter # of pins (null for random)')
             if move1 == '':
                 move1 = random.randint(0,10)
