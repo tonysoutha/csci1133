@@ -73,7 +73,7 @@ def play1(move1,standing):
         turtle.goto(0,-140)
         turtle.color('red')
         turtle.write('Strike!',align='center',font = ('arial',30,))
-        #time.sleep(2)
+        time.sleep(2)
     else:
         while i < move1:
             pins(standing[i])
@@ -98,7 +98,7 @@ def play2(move1,move2,standing):
         turtle.goto(0,-140)
         turtle.color('red')
         turtle.write('Spare',align='center',font = ('arial',30,))
-        #time.sleep(2)
+        time.sleep(2)
     else:
         i = int(move1)
         while i < move1 + move2:
@@ -112,7 +112,7 @@ def play2(move1,move2,standing):
         turtle.goto(0,-140)
         turtle.color('red')
         turtle.write('Open Frame: ' + str(10-(move1+move2)),align='center',font = ('arial',30,))
-        #time.sleep(2)
+        time.sleep(2)
 
 def finalScore(pinlist):
     scorelist = []
