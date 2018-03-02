@@ -172,12 +172,12 @@ def main():
         standing = []
         if frame != 11 or pinlist[-1] == 10 or pinlist[-1] + pinlist[-2] == 10:
             makeboard(standing)
-            move1 = turtle.textinput('Frame ' + str(frame),'Enter # of pins (null for random)')
+            move1 = turtle.textinput('Frame: ' + str(frame),'Enter # of pins (null for random)')
             move1 = change_input1(move1)
             play1(move1,standing)
             pinlist.append(move1)
             if move1 != 10:
-                move2 = turtle.textinput('Frame ' + str(frame),'Enter # of pins (null for random)')
+                move2 = turtle.textinput('Frame: ' + str(frame),'Enter # of pins (null for random)')
                 move2 = change_input2(move1,move2)
                 play2(move1,move2,standing)
                 pinlist.append(move2)
