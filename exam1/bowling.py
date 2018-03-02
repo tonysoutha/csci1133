@@ -86,7 +86,7 @@ def play1(move1,standing):
 
 def play2(move1,move2,standing):
     if move2 == 10 - move1:
-        i = int(move1)
+        i = move1
         while i < 10:
             pins(standing[i])
             turtle.color('white')
@@ -100,7 +100,7 @@ def play2(move1,move2,standing):
         turtle.write('Spare',align='center',font = ('arial',30,))
         time.sleep(2)
     else:
-        i = int(move1)
+        i = move1
         while i < move1 + move2:
             pins(standing[i])
             turtle.color('white')
@@ -147,6 +147,23 @@ def writescore(finalscore):
     turtle.goto(0,-140)
     turtle.color('red')
     turtle.write('Final Score: ' + finalscore,align='center',font = ('arial',30,))
+    time.sleep(2)
+
+def change_input1(move1):
+    if move1 == '':
+        move1 = random.randint(0,10)
+    if int(move1) > 10:
+        move1 = 10
+    move1 = int(move1)
+    return move1
+
+def change_input2(move1,move2):
+    if move2 == '':
+        move2 = random.randint(0,move1)
+    if int(move2) > 10 - move1:
+        move2 = 10 - move1
+    move2 = int(move2)
+    return move2
 
 def main():
     pinlist = []
@@ -156,20 +173,12 @@ def main():
         if frame != 11 or pinlist[-1] == 10 or pinlist[-1] + pinlist[-2] == 10:
             makeboard(standing)
             move1 = turtle.textinput('Frame ' + str(frame),'Enter # of pins (null for random)')
-            if move1 == '':
-                move1 = random.randint(0,10)
-            if int(move1) > 10:
-                move1 = 10
-            move1 = int(move1)
+            move1 = change_input1(move1)
             play1(move1,standing)
             pinlist.append(move1)
             if move1 != 10:
                 move2 = turtle.textinput('Frame ' + str(frame),'Enter # of pins (null for random)')
-                if move2 == '':
-                    move2 = random.randint(0,move1)
-                if int(move2) > 10 - move1:
-                    move2 = 10 - move1
-                move2 = int(move2)
+                move2 = change_input2(move1,move2)
                 play2(move1,move2,standing)
                 pinlist.append(move2)
         frame += 1
