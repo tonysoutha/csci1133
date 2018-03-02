@@ -116,30 +116,30 @@ def play2(move1,move2,standing):
 
 def finalScore(pinlist):
     scorelist = []
-    rolls = 0
-    scores = 0
-    while rolls < len(pinlist):
-        if rolls == len(pinlist)-1:
-            scorelist.append(pinlist[rolls])
-            rolls += 1
-            scores += 1
-        elif pinlist[rolls] == 10:
+    roll = 0
+    score = 0
+    while roll < len(pinlist):
+        if roll == len(pinlist)-1:
+            scorelist.append(pinlist[roll])
+            roll += 1
+            score += 1
+        elif pinlist[roll] == 10:
             scorelist.append(10)
-            scorelist[scores] += pinlist[rolls+1]
-            if rolls != len(pinlist)-2:
-                scorelist[scores] += pinlist[rolls+2]
-            rolls += 1
-            scores += 1
-        elif pinlist[rolls] + pinlist[rolls+1] == 10:
+            scorelist[score] += pinlist[roll+1]
+            if roll != len(pinlist)-2:
+                scorelist[score] += pinlist[roll+2]
+            roll += 1
+            score += 1
+        elif pinlist[roll] + pinlist[roll+1] == 10:
             scorelist.append(10)
-            scorelist[scores] += pinlist[rolls+2]
-            rolls += 2
-            scores += 1
+            scorelist[score] += pinlist[roll+2]
+            roll += 2
+            score += 1
         else:
-            scorelist.append(pinlist[rolls])
-            scorelist[scores] += pinlist[rolls+1]
-            rolls += 2
-            scores += 1
+            scorelist.append(pinlist[roll])
+            scorelist[score] += pinlist[roll+1]
+            roll += 2
+            score += 1
     return sum(scorelist)
 
 def writescore(finalscore):
