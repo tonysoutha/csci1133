@@ -68,7 +68,6 @@ def createparticle(R,grid,particles):
     a = random.randint(0,360)
     x = int(((math.cos(a * (math.pi / 180))*R) + 100 + 0.5))
     y = int(((math.sin(a * (math.pi / 180))*R) + 100 + 0.5))
-    turtle.goto(x,y)
 
     if particles == 0 or particles == -1:
         turtle.forward(0)
@@ -83,7 +82,6 @@ def createparticle(R,grid,particles):
                 x2 = int(math.cos(random.choice(randang) * (math.pi / 180)) + 0.5 + x2)
                 y2 = int(math.sin(random.choice(randang) * (math.pi / 180)) + 0.5 + y2)
                 steps += 1
-                turtle.goto(x2,y2)
             else:
                 createparticle(R,grid,particles)
 
