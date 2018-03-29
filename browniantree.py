@@ -54,7 +54,7 @@ def hasNeighbor(grid,x,y):
 def origin(grid,particles):
     turtle.setworldcoordinates(0,0,199,199)
     turtle.penup()
-#    turtle.hideturtle()
+    turtle.hideturtle()
     turtle.speed(0)
     if particles != -1:
         turtle.goto(100,100)
@@ -63,7 +63,7 @@ def origin(grid,particles):
         grid[100][100] = True
 
 def createparticle(R,grid,particles):
-#    turtle.hideturtle()
+    turtle.hideturtle()
     turtle.speed(0)
     a = random.randint(0,360)
     x = int(((math.cos(a * (math.pi / 180))*R) + 100 + 0.5))
