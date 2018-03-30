@@ -63,8 +63,6 @@ def origin(grid,particles):
         grid[100][100] = True
 
 def createparticle(R,grid,particles):
-    turtle.hideturtle()
-    turtle.speed(0)
     a = random.randint(0,360)
     x = int(((math.cos(a * (math.pi / 180))*R) + 100 + 0.5))
     y = int(((math.sin(a * (math.pi / 180))*R) + 100 + 0.5))
@@ -88,7 +86,7 @@ def createparticle(R,grid,particles):
             turtle.goto(x2,y2)
             turtle.dot(5)
             grid[x2][y2] = True
-            if int((((abs(x2)-100) ** 2 + (abs(y2)-100) **2) ** 0.5) + 0.5) > R:
+            if int((((abs(x2)-100) ** 2 + (abs(y2)-100) ** 2) ** 0.5) + 0.5) > R:
                 createparticle(R+1,grid,particles-1)
             else:
                 createparticle(R,grid,particles-1)
