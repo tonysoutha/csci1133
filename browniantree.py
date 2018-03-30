@@ -63,9 +63,9 @@ def origin(grid,particles):
         grid[100][100] = True
 
 def createparticle(R,grid,particles):
-    a = random.randint(0,360)
-    x = int(((math.cos(a * (math.pi / 180))*R) + 100 + 0.5))
-    y = int(((math.sin(a * (math.pi / 180))*R) + 100 + 0.5))
+    angle = random.randint(0,360)
+    x = int(((math.cos(angle * (math.pi / 180))*R) + 100 + 0.5))
+    y = int(((math.sin(angle * (math.pi / 180))*R) + 100 + 0.5))
 
     if particles == 0 or particles == -1:
         turtle.forward(0)
