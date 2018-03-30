@@ -11,43 +11,43 @@ import turtle
 import random
 import math
 
-def hasNeighbor(grid,x,y):
+def hasNeighbor(grid,row,col):
     valid = False
-    if x > 199 or y > 199:
+    if row > 199 or col > 199:
         return valid
     else:
-        e = grid[x+1][y]
-        n = grid[x][y+1]
-        ne = grid[x+1][y+1]
-        w = grid[x-1][y]
-        s = grid[x][y-1]
-        sw = grid[x-1][y-1]
-        se = grid[x+1][y-1]
-        nw = grid[x-1][y+1]
+        e = grid[row+1][col]
+        n = grid[row][col+1]
+        ne = grid[row+1][col+1]
+        w = grid[row-1][col]
+        s = grid[row][col-1]
+        sw = grid[row-1][col-1]
+        se = grid[row+1][col-1]
+        nw = grid[row-1][col+1]
 
-        if x == 0 and y == 0:
+        if row == 0 and col == 0:
             loc = [e,n,ne]
-        elif x == 0 and y == 199:
+        elif row == 0 and col == 199:
             loc = [e,s,se]
-        elif x == 199 and y == 0:
+        elif row == 199 and col == 0:
             loc = [w,n,nw]
-        elif x == 199 and y == 199:
+        elif row == 199 and col == 199:
             loc = [w,s,sw]
 
-        elif x in range(1,199) and y == 0:
+        elif row in range(1,199) and col == 0:
             loc = [n,e,w,ne,nw]
-        elif x in range(1,199) and y == 199:
+        elif row in range(1,199) and col == 199:
             loc = [s,e,w,se,sw]
-        elif x == 0 and y in range(1,199):
+        elif row == 0 and col in range(1,199):
             loc = [n,s,e,ne,se]
-        elif x == 199 and y in range(1,199):
+        elif row == 199 and col in range(1,199):
             loc = [n,s,w,nw,sw]
         else:
             loc = [n,s,e,w,ne,nw,se,sw]
 
         for each in loc:
             if each == True:
-                if grid[x][y] == False:
+                if grid[row][col] == False:
                     valid = True
         return valid
 
@@ -77,27 +77,25 @@ def createparticle(R,grid,particles):
         y2 = int(math.sin(random.choice(randang) * (math.pi / 180)) + 0.5 + y)
 
         steps = 0
-        while hasNeighbor(grid,x2,y2) == False:
-            if steps < 200:
-                x2 = int(math.cos(random.choice(randang) * (math.pi / 180)) + 0.5 + x2)
-                y2 = int(math.sin(random.choice(randang) * (math.pi / 180)) + 0.5 + y2)
-                steps += 1
-            else:
-                createparticle(R,grid,particles)
+        while hasNeighbor(grid,x2,y2) == False and steps < 200:
+            x2 = int(math.cos(random.choice(randang) * (math.pi / 180)) + 0.5 + x2)
+            y2 = int(math.sin(random.choice(randang) * (math.pi / 180)) + 0.5 + y2)
+            steps += 1
 
-        if hasNeighbor(grid,x2,y2) == True and steps < 200:
+        if steps == 200:
+            createparticle(R,grid,particles)
+        else:
             turtle.goto(x2,y2)
             turtle.dot(5)
             grid[x2][y2] = True
-
             if int((((abs(x2)-100) ** 2 + (abs(y2)-100) **2) ** 0.5) + 0.5) > R:
                 createparticle(R+1,grid,particles-1)
             else:
                 createparticle(R,grid,particles-1)
 
 def main():
-    grid = []
     R = 1
+    grid = []
     for i in range(200):
         grid.append([False]*200)
     particles = int(turtle.textinput('','Enter tree size: ')) - 1
