@@ -195,7 +195,7 @@ class Minesweeper:
         self.__s.exitonclick()
 
 def main():
-    Minesweeper(14,14,1)
+    Minesweeper(14,14,15)
 
 if __name__ == '__main__':
     main()
