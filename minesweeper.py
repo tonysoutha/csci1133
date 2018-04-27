@@ -9,7 +9,6 @@
 
 import turtle
 import random
-import math
 
 class Cell:
 
@@ -195,7 +194,7 @@ class Minesweeper:
         self.__s.exitonclick()
 
 def main():
-    Minesweeper(14,14,15,True)
+    Minesweeper(14,14,15)
 
 if __name__ == '__main__':
     main()
