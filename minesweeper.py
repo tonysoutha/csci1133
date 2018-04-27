@@ -12,12 +12,12 @@ import random
 
 class Cell:
 
-    def __init__(self,t,xmin,ymin,width,height):
+    def __init__(self,t,xmin,ymin,xmax,ymax):
         self.__t = t
         self.__xmin = xmin
         self.__ymin = ymin
-        self.__width = width
-        self.__height = height
+        self.__xmax = xmax
+        self.__ymax = ymax
 
         self.__bomb = False
         self.__cleared = False
