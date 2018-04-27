@@ -168,6 +168,7 @@ class Minesweeper:
         x = [1,1,0,-1,-1,-1,0,1]
         y = [0,-1,-1,-1,0,1,1,1]
         if self.cellsRemaining() == 0:
+            self.__grid[row][col].showCount(self.countBombs(row,col))
             self.win()
         elif self.countBombs(row,col) > 0:
                 self.__grid[row][col].showCount(self.countBombs(row,col))
@@ -194,7 +195,7 @@ class Minesweeper:
         self.__s.exitonclick()
 
 def main():
-    Minesweeper(14,14,15)
+    Minesweeper(14,14,1)
 
 if __name__ == '__main__':
     main()
