@@ -62,14 +62,11 @@ class Cell:
 
         self.__t.pendown()
         self.__t.begin_fill()
-        self.__t.forward(self.__xmax-self.__xmin)
-        self.__t.left(90)
-        self.__t.forward(self.__ymax-self.__ymin)
-        self.__t.left(90)
-        self.__t.forward(self.__xmax-self.__xmin)
-        self.__t.left(90)
-        self.__t.forward(self.__ymax-self.__ymin)
-        self.__t.left(90)
+        for i in range(2):
+            self.__t.forward(self.__xmax-self.__xmin)
+            self.__t.left(90)
+            self.__t.forward(self.__ymax-self.__ymin)
+            self.__t.left(90)
         self.__t.end_fill()
 
 class Minesweeper:
