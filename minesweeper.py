@@ -117,14 +117,14 @@ class Minesweeper:
                     self.__grid[randx][randy].draw()
 
     def countBombs(self,row,col):
-        neighborsx = [1,1,0,-1,-1,-1,0,1]
-        neighborsy = [0,-1,-1,-1,0,1,1,1]
+        x = [1,1,0,-1,-1,-1,0,1]
+        y = [0,-1,-1,-1,0,1,1,1]
         bombs = 0
 
         for i in range(8):
-            if neighborsx[i]+row in range(0,self.__rows):
-                if neighborsy[i]+col in range(0,self.__cols):
-                    if self.__grid[neighborsx[i]+row][neighborsy[i]+col].isBomb() == True:
+            if x[i]+row in range(0,self.__rows):
+                if y[i]+col in range(0,self.__cols):
+                    if self.__grid[x[i]+row][y[i]+col].isBomb() == True:
                         bombs += 1
         return bombs
 
@@ -152,11 +152,11 @@ class Minesweeper:
                         self.clearCell(i,j)
 
     def gameOver(self):
-        for k in range(self.__rows):
-            for l in range(self.__cols):
-                if self.__grid[k][l].isBomb() == True:
-                    self.__grid[k][l].draw()
-                    self.__grid[k][l].showCount('*')
+        for i in range(self.__rows):
+            for j in range(self.__cols):
+                if self.__grid[i][j].isBomb() == True:
+                    self.__grid[i][j].draw()
+                    self.__grid[i][j].showCount('*')
         self.__t.penup()
         self.__t.goto(-70,-200)
         self.__t.write('Game over',font=("Arial",35))
@@ -173,20 +173,20 @@ class Minesweeper:
         elif self.countBombs(row,col) > 0:
                 self.__grid[row][col].showCount(self.countBombs(row,col))
         else:
-            for k in range(8):
-                if x[k]+row in range(0,self.__rows):
-                    if y[k]+col in range(0,self.__cols):
-                        if self.__grid[x[k]+row][y[k]+col].isCleared() == False:
-                            self.__grid[x[k]+row][y[k]+col].cleared()
-                            self.__grid[x[k]+row][y[k]+col].draw()
-                            self.clearCell(x[k]+row,y[k]+col)
+            for i in range(8):
+                if x[i]+row in range(0,self.__rows):
+                    if y[i]+col in range(0,self.__cols):
+                        if self.__grid[x[i]+row][y[i]+col].isCleared() == False:
+                            self.__grid[x[i]+row][y[i]+col].cleared()
+                            self.__grid[x[i]+row][y[i]+col].draw()
+                            self.clearCell(x[i]+row,y[i]+col)
 
     def win(self):
-        for k in range(self.__rows):
-            for l in range(self.__cols):
-                if self.__grid[k][l].isBomb() == True:
-                    self.__grid[k][l].draw()
-                    self.__grid[k][l].showCount('*')
+        for i in range(self.__rows):
+            for j in range(self.__cols):
+                if self.__grid[i][j].isBomb() == True:
+                    self.__grid[i][j].draw()
+                    self.__grid[i][j].showCount('*')
         self.__t.penup()
         self.__t.goto(-170,-200)
         self.__t.write('Congratulations! you win',font=("Arial",35))
