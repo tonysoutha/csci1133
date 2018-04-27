@@ -23,7 +23,7 @@ class Cell:
         self.__cleared = False
 
     def isIn(self,x,y):
-        if x in range(self.__xmin,self.__width+1) and y in range(self.__ymin,self.__height+1):
+        if x in range(self.__xmin,self.__xmax+1) and y in range(self.__ymin,self.__ymax+1):
             return True
         return False
 
@@ -62,13 +62,13 @@ class Cell:
 
         self.__t.pendown()
         self.__t.begin_fill()
-        self.__t.forward(self.__width-self.__xmin)
+        self.__t.forward(self.__xmax-self.__xmin)
         self.__t.left(90)
-        self.__t.forward(self.__height-self.__ymin)
+        self.__t.forward(self.__ymax-self.__ymin)
         self.__t.left(90)
-        self.__t.forward(self.__width-self.__xmin)
+        self.__t.forward(self.__xmax-self.__xmin)
         self.__t.left(90)
-        self.__t.forward(self.__height-self.__ymin)
+        self.__t.forward(self.__ymax-self.__ymin)
         self.__t.left(90)
         self.__t.end_fill()
 
